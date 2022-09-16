@@ -77,7 +77,7 @@ min <= target == compile
   - 지금 만들고 있는 앱에선 파일 업로드할 일이 없지만 나중에 만약 이런 상황이 발생한다면 Flipper를 비활성화해볼 수도 있을 것 같다
 - 그래서 다시 찾아보니
   - https://velog.io/@kyoungwoo95/RNReact-Native-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-7-Android-%EC%97%90%EC%84%9C-Redux-%EB%94%94%EB%B2%84%EA%B9%85%ED%95%98%EA%B8%B0
-  - 이 블로그 글에서 4번인 localhost의 포트를 안드로이드 애뮬레이터의 IP주소로 바꿔주니 해결이 되었다
+  - 이 블로그 글에서 4번인 URL에서 localhost를 안드로이드 애뮬레이터의 IP주소로 바꿔주니 해결이 되었다
 
 ## TextInput ref
 
