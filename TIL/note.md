@@ -93,3 +93,25 @@ min <= target == compile
   - https://reactnative.dev/docs/pressable
   - 비슷한 태그로 Touchable 시리즈가 있는데 다른 것들은 클릭시 이펙트가 있어서 TouchableWithoutFeedback을 쓸 수 있지만
   - 공식문서에서도 Pressable을 더 추천하기에 사용하였다
+
+# 2022.09.19
+
+## 가상 키보드가 TextInput 화면을 가리는 경우
+
+- `KeyboardAvoidingView` 컴포넌트로 감싸면 해당 컴포넌트로 감싼 부분이 가상 키보드 만큼 올라간다
+- 이때 글자가 겹쳐보이는 이슈가 생길 수 있는데 `ScrollView`로 감싸주면 겹쳐보이는 문제를 해결할 수 있다
+
+## react native 실제 기기 연결(안드로이드)
+
+- https://ehddud100677.tistory.com/m/387
+  - 설정 > 휴대전화 정보 > 소프트웨어 정보 > 빌드 번호(여러번 클릭) > 개발자 모드 생김
+  - 개발자모드 > usb 디버깅 활성화
+  - adb devices 명령어로 디바이스 연결된 것 확인
+  - 기기 포트 변경 : adb reverse tcp:8081 tcp:8081
+  - npm run android 명령어로 실행
+
+## 안드로이드 기기에서 로컬서버(localhost) 접속
+
+- https://leenow.tistory.com/7
+  - 에뮬레이터는 에뮬레이터 주소로 연결해야 내 컴퓨터의 local서버(localhost)와 연결되지만
+  - 실 기기에선 같은 와이파이에 접속 후 내 컴퓨터의 ip주소를 확인해서 연결해줘야 한다
