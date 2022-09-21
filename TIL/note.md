@@ -134,3 +134,41 @@ min <= target == compile
 - 구글에 `QR코드 생성`이라고 검색하면 나온다
   - https://ko.qr-code-generator.com/
 - QR코드를 임의로 생성해서 테스트를 할 수 있다
+
+# 2022.09.21
+
+## 세로 화면만 지원
+
+- 아직 앱 개발에 능숙하지 않아서 가로화면까지 반응형이 지원되는 앱을 만들기 어려웠다
+- 그래서 세로화면만 지원이 되게 설정하였다
+
+### 안드로이드 세로화면 고정하기
+
+```xml
+<activity
+        ...
+        android:screenOrientation="portrait"
+```
+
+- android/app/src/main/AndroidManifest.xml 에서 위와 같이 코드 추가
+
+### IOS 세로화면 고정하기
+
+ios/{프로젝트\_이름}/Info.plist
+
+```jsx
+<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		// <string>UIInterfaceOrientationLandscapeLeft</string>
+		// <string>UIInterfaceOrientationLandscapeRight</string>
+```
+
+- // 표시한 부분 삭제
+
+## React native styling
+
+### Text 글자수 제한
+
+- numberOfLines에 제한할 줄수를 전달
+- ellipsizeMode="tail" 로 말 줄임표 표시
