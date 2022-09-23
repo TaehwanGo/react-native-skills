@@ -172,3 +172,56 @@ ios/{프로젝트\_이름}/Info.plist
 
 - numberOfLines에 제한할 줄수를 전달
 - ellipsizeMode="tail" 로 말 줄임표 표시
+
+# 2022. 9. 23.
+
+## Javascript 프로젝트를 Typescript로 전환하기
+
+### 공식 Typescript template과 비교하면서 전환
+
+- https://reactnative.dev/docs/typescript
+
+### 기존 자바스크립트 프로젝트와 위 템플릿 프로젝트를 비교
+
+- 타입스크립트 프로젝트에 필요한 패키지를 설치
+  - "@tsconfig/react-native"
+  - "@types/jest"
+  - "@types/react-native"
+  - "@types/react-test-renderer"
+  - "@typescript-eslint/eslint-plugin"
+  - "@typescript-eslint/parser"
+  - "react-test-renderer"
+  - "typescript"
+- 기존에 설치했던 라이브러리 중 타입스크립트 지원 패키지를 따로 설치해야하는 것이 있는지 확인
+  - 다 지원하고 있어서 따로 추가 설치할 필요가 없었음
+
+### Typescript 설정
+
+- tsconfig
+
+```json
+// prettier-ignore
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+    /* Completeness */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  }
+}
+```
+
+- @tsconfig/react-native/tsconfig.json을 눌러보면 이미 필요한 세팅이 되어있어서
+- 그것을 extends하므로 추가적 설정할 부분이 거의 없는 것 같았다
+
+### 기존 자바스크립트 파일들을 타입스크립트 파일로 변경
+
+- js -> ts | tsx 로 변경
+  - 타입이 지정되지 않은 부분은 타입을 전부 지정해서 에러 해결
+
+### 후기
+
+- 생각보다 설정할 부분이 거의 없어서 오래걸리지 않았다
+- 자바스크립트파일을 타입스크립트로 바꾸면서 타입을 지정해야하는 것은 익숙하므로 어렵지 않았다
+- 타입스크립트로 전환하고 보니 기존에 몰랐던 버그를 찾을 수 있어서 좋았다
+- 타입스크립트는 짱이다 !
