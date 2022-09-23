@@ -231,5 +231,13 @@ ios/{프로젝트\_이름}/Info.plist
 - https://reactnative.dev/docs/safeareaview
 - SafeAreaView의 목적은 장치의 안전 영역 경계 내에서 콘텐츠를 렌더링하는 것입니다.
 - 현재 iOS 버전 11 이상이 설치된 iOS 기기에만 적용됩니다.
-- 안드로이드 StatusBar 부분에 컨텐츠가 가지 않도록 막아주는 역할도 하는 것 같다
-  - 컴포넌트 최외각에서 전체를 감싸줘야 적용된다
+- 안드로이드엔 적용이 안된다 해골물이었다
+
+```jsx
+<StatusBar translucent backgroundColor="transparent" />
+```
+
+- translucent 이 녀석이 문제였다
+- flex와 justifyContent로 padding 없이 위쪽 컨텐츠에 정렬을 한 경우
+  - 컨텐츠가 가상 키보드에 의해 밀리면 StatusBar 영역을 침범하게 되는데
+  - padding을 줘서 해결할 수 있다
