@@ -1,13 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
-import Profile from './components/Profile';
+import MessageForm from './components/MessageForm';
 
 function App() {
-  return (
-    <Profile name="Tony" isActivated>
-      <Text>Hello world</Text>
-    </Profile>
-  );
+  return <MessageForm />;
 }
 
 export default App;
