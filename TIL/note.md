@@ -241,3 +241,14 @@ ios/{프로젝트\_이름}/Info.plist
 - flex와 justifyContent로 padding 없이 위쪽 컨텐츠에 정렬을 한 경우
   - 컨텐츠가 가상 키보드에 의해 밀리면 StatusBar 영역을 침범하게 되는데
   - padding을 줘서 해결할 수 있다
+
+# 2022. 9. 29
+
+## HTTPS
+
+- API서버에 https를 적용했는데 아래와 같은 에러가 발생했다
+  - java.security.cert.CertPathValidatorException: Trust anchor for certification path not found.
+  - 처음엔 인증서 문제 같아서 서버 개발자에게 말을 했지만
+  - 안드로이드 버전이 낮은 기기에서 인증서를 지원하지 않는 에러 같았다(아직 추측)
+    - https://stackoverflow.com/questions/51363855/how-to-configure-axios-to-use-ssl-certificate
+    - 내일 출근하면 다시 시도해봐야겠다
