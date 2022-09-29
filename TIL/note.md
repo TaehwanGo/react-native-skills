@@ -242,7 +242,7 @@ ios/{프로젝트\_이름}/Info.plist
   - 컨텐츠가 가상 키보드에 의해 밀리면 StatusBar 영역을 침범하게 되는데
   - padding을 줘서 해결할 수 있다
 
-# 2022. 9. 29
+# 2022. 9. 28 ~ 29
 
 ## HTTPS
 
@@ -251,4 +251,11 @@ ios/{프로젝트\_이름}/Info.plist
   - 처음엔 인증서 문제 같아서 서버 개발자에게 말을 했지만
   - 안드로이드 버전이 낮은 기기에서 인증서를 지원하지 않는 에러 같았다(아직 추측)
     - https://stackoverflow.com/questions/51363855/how-to-configure-axios-to-use-ssl-certificate
-    - 내일 출근하면 다시 시도해봐야겠다
+    - react native에선 Nodejs core module을 사용할 수 없는 것 같다(2022.09.29)
+      - 인식이 안됨
+  - 안드로이드 설정을 건들여 봤는데 앱이 바로 꺼져버린다
+    - https://stackoverflow.com/questions/52400120/java-security-cert-certpathvalidatorexception-trust-anchor-for-certification-pa
+    - 디버그모드 빌드에서 에러도 없는데 왜 그런지 모르겠다
+  - 안드로이드에서 설정을 해줘야되는 것 같은데 정확히 뭐가 문제인지 파악이 잘 안된다
+    - .cer 파일을 받아야 될 것 같은데 이것도 될 거란 보장이 없다..
+    - 내일 이어서 해봐야 겠다
