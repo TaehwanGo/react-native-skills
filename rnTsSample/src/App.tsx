@@ -1,12 +1,12 @@
 import React from 'react';
-import {AuthProvider} from './store/context/AuthContext';
-import Counter from './components/Counter';
+import {NavigationContainer} from '@react-navigation/native';
+import RootStack from './routes/RootStack';
 
 function App() {
   return (
-    <AuthProvider>
-      <Counter />
-    </AuthProvider>
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
   );
 }
 
