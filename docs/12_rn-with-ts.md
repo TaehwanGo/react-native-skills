@@ -26,3 +26,7 @@
 - React 16.8 버전부터 추가된 hook인데 사용을 해본적이 없었다
 - useState를 대체할 수 있는 hook인데 사실 번거로워서 잘 안쓸 것 같긴 하다
 - 그래도 미니 Redux 같아서 귀엽고 신기하다
+
+## 12.4 타입스크립트로 Context API 사용하기
+
+- context(AuthContext.tsx)를 만들고 해당 컨텍스트에 포함된 것들을 사용할 수 있는 hook(useAuth)을 만들어서 제공하는 것이 안전하다

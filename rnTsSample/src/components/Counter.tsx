@@ -1,5 +1,6 @@
-import React, {useReducer} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import {Button, Text, View} from 'react-native';
+import {useAuth} from '../store/context/AuthContext';
 
 interface CounterState {
   value: number;
@@ -26,11 +27,28 @@ function reducer(state: CounterState, action: CounterAction) {
 
 const Counter = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const {user, setUser} = useAuth();
+
+  useEffect(() => {
+    console.log('user', user);
+  }, [user]);
   return (
     <View>
       <Text>Counter: {state.value}</Text>
-      <Button title="+1" onPress={() => dispatch({type: 'increment'})} />
-      <Button title="-1" onPress={() => dispatch({type: 'decrement', by: 1})} />
+      <Button
+        title="+1"
+        onPress={() => {
+          dispatch({type: 'increment'});
+          setUser({id: 1, name: 'test'});
+        }}
+      />
+      <Button
+        title="-1"
+        onPress={() => {
+          dispatch({type: 'decrement', by: 1});
+          setUser({id: 2, name: 'test2'});
+        }}
+      />
     </View>
   );
 };
