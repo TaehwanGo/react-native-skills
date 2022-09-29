@@ -1,8 +1,8 @@
 import React from 'react';
-import MessageForm from './components/MessageForm';
+import Counter from './components/Counter';
 
 function App() {
-  return <MessageForm />;
+  return <Counter />;
 }
 
 export default App;
