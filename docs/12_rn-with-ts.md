@@ -94,3 +94,21 @@ const navigation = useNavigation<RootStackNavigationProp>();
 
 - 하단 탭 네비게이션
 - 하단 탭 네비 적용
+
+#### 만약 MainTab 내부에서 또 다른 네비게이터를 사용한다면
+
+- CompositeNavigationProp을 또 사용하면 된다
+
+```ts
+// 예시 코드
+// MainTab.tsx
+type AccountStackParamList = {
+  Account: undefined;
+  Setting: undefined;
+};
+
+export type AccountStackNavigationProp = CompositeNavigationProp<
+  MainTabNavigationProp,
+  StackNavigationProp<AccountStackParamList>
+>;
+```
