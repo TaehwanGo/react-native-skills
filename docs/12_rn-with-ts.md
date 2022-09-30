@@ -89,3 +89,7 @@ const navigation = useNavigation<RootStackNavigationProp>();
   더 안전하게 처리하려면 react-native-safe-area-context의 SafeAreaView를 사용하는 것이
   더 좋다고 한다
   - https://stackoverflow.com/questions/61887661/what-are-the-differences-between-different-implementations-of-safeareaview/67264221#67264221
+
+### 12.5.3 네비게이션 감싸기
+
+- 하단 탭 네비게이션
