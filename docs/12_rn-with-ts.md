@@ -73,3 +73,19 @@ export type RootStackNavigationProp =
 
 const navigation = useNavigation<RootStackNavigationProp>();
 ```
+
+### 12.5.2.3 useRoute 사용하기
+
+- Stack으로 쌓여진 컴포넌트(Screen)엔 자동으로 props에 navigation과 route이 prop으로 전달된다
+- 그것들을 사용했었는데 타입을 정의하려고 했는데 잘 찾지 못했어서 불편했는데
+- useNavigation과 useRoute을 사용하면 타입도 지정할 수 있고
+  Stack컴포넌트가 아닌 다른 컴포넌트에서도 사용할 수 있는 것 같아 훨씬 편하고 좋은 것 같다
+
+#### SafeAreaView
+
+- react native에서 제공하는 것과
+- react-native-safe-area-context 제공하는 것이 있다
+- 차이점은 기본으로 제공되는 것은 animating 이슈가 있기에(정확하게는 모름)
+  더 안전하게 처리하려면 react-native-safe-area-context의 SafeAreaView를 사용하는 것이
+  더 좋다고 한다
+  - https://stackoverflow.com/questions/61887661/what-are-the-differences-between-different-implementations-of-safeareaview/67264221#67264221

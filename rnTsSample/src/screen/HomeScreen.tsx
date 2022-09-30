@@ -1,12 +1,12 @@
-import React, {Button, Text, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {RootStackNavigationProp} from '../types/screen';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import React, { Button, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '../types/route';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HomeScreen = () => {
   const navigation = useNavigation<RootStackNavigationProp>();
   const onPress = () => {
-    navigation.navigate('Details', {id: 1});
+    navigation.navigate('Details', { id: 1 });
   };
   return (
     <SafeAreaView>
