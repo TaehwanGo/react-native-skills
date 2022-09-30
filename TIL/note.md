@@ -242,7 +242,7 @@ ios/{프로젝트\_이름}/Info.plist
   - 컨텐츠가 가상 키보드에 의해 밀리면 StatusBar 영역을 침범하게 되는데
   - padding을 줘서 해결할 수 있다
 
-# 2022. 9. 28 ~ 29
+# 2022. 9. 28 ~ 30
 
 ## HTTPS
 
@@ -258,4 +258,20 @@ ios/{프로젝트\_이름}/Info.plist
     - 디버그모드 빌드에서 에러도 없는데 왜 그런지 모르겠다
   - 안드로이드에서 설정을 해줘야되는 것 같은데 정확히 뭐가 문제인지 파악이 잘 안된다
     - .cer 파일을 받아야 될 것 같은데 이것도 될 거란 보장이 없다..
-    - 내일 이어서 해봐야 겠다
+    - 키문제가 아닌 것 같다(2022.09.30)
+    - 안드로이드 공식문서를 보니 인증서는 .cer뿐만 아니라 .pem도 허용이 되는 것 같았다(처음 전달받은게 .pem)
+  - 네트워크 환경 설정을 구성했다
+    - https://developer.android.com/training/articles/security-ssl#CommonProblems
+    - 안드로이드 공식문서를 보면서 문제가 뭔지 궁금했지만 서버개발자도 잘 파악을 못 하고 있었다
+    - 처음에 네트워크 설정파일 연결이 안되었지만 결국 연결시킬 수 있었다
+      - https://developer.android.com/training/articles/security-config#manifest
+      - https://stackoverflow.com/questions/60328951/react-native-android-does-not-build-when-i-add-networksecurityconfig-tag
+  - 그러나 안드로이드 쪽에서 도메인도 허용해보고 키도 등록해봤지만 해결되지 않았다
+  - 아래 링크를 보고 인증서 종류를 파악해보려했는데
+    - https://darkstart.tistory.com/86
+    - 인증서 기한 만료 (에러 num: 10)가 발생하고 있는 것을 확인했다
+    - 명령어
+      - openssl s_client -connect {도메인}:443 | openssl x509 -noout -subject -issuer
+    - 에러
+      - verify error:num=10:certificate has expired
+  - 다음주 팀장님한테 물어보기로 했다
