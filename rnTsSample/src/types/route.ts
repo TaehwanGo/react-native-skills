@@ -1,7 +1,8 @@
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { MainTabNavigationScreenParams } from '../screen/MainTab';
 
 export type RootStackParamList = {
-  Home: undefined;
+  MainTab: MainTabNavigationScreenParams;
   Details: {
     id: number;
   };

@@ -93,3 +93,4 @@ const navigation = useNavigation<RootStackNavigationProp>();
 ### 12.5.3 네비게이션 감싸기
 
 - 하단 탭 네비게이션
+- 하단 탭 네비 적용
