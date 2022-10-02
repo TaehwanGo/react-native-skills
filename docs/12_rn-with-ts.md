@@ -112,3 +112,8 @@ export type AccountStackNavigationProp = CompositeNavigationProp<
   StackNavigationProp<AccountStackParamList>
 >;
 ```
+
+## 12.6 서드 파티 라이브러리의 타입
+
+- TS를 공식적으로 지원하지 않는 라이브러리 중 DT라고 표기되어 있는 라이브러리는
+  @types/{라이브러리이름} 을 받아서 타입 지원을 받을 수 있다
