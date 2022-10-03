@@ -12,10 +12,10 @@ interface AuthContextValue {
 
 export const AuthContext = React.createContext<AuthContextValue | null>(null);
 
-export function AuthProvider({children}: {children: React.ReactNode}) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = React.useState<User | null>(null);
   return (
-    <AuthContext.Provider value={{user, setUser}}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );

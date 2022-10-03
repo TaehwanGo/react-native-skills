@@ -1,5 +1,5 @@
-import React, {useEffect, useRef} from 'react';
-import {View, StyleSheet, TextInput, Button, Text} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, StyleSheet, TextInput, Button, Text } from 'react-native';
 
 function MessageForm() {
   const [text, setText] = React.useState('');
@@ -12,7 +12,7 @@ function MessageForm() {
   const inputRef = useRef<TextInput>(null);
 
   const onPress = () => {
-    setLastMessage({message: text, date: new Date(), id: nextId.current});
+    setLastMessage({ message: text, date: new Date(), id: nextId.current });
     setText('');
     nextId.current++;
   };

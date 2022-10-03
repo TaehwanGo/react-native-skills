@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 interface ProfileProps {
   name: string;
@@ -17,7 +17,7 @@ function Profile({
   return (
     <View style={styles.container}>
       <View style={isActivated && styles.activeStyle}>
-        <Image source={{uri: image}} />
+        <Image source={{ uri: image }} />
         <Text style={styles.text}>{name}</Text>
         <View>{children}</View>
       </View>
