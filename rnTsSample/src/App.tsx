@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './\bstates/redux/store';
+import store from './states/redux/store';
 import AuthApp from './components/auth/AuthApp';
 
 function App() {

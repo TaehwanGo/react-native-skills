@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import { Button, Text, View } from 'react-native';
-import { useAuth } from '../states/context/AuthContext';
+import { useAuth } from '../states/context/AuthContext';
 
 interface CounterState {
   value: number;
