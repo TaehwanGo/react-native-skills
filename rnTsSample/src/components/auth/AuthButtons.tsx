@@ -1,15 +1,14 @@
 import React from 'react';
 import { Button, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { authorize, logout } from '../../states/redux/slice/auth';
+import useAuthAction from '../../hooks/useAuthAction';
 
 const AuthButtons = () => {
-  const dispatch = useDispatch();
+  const { authorize, logout } = useAuthAction();
   const onPressLogin = () => {
-    dispatch(authorize({ id: 1, username: 'TaehwanGo', displayName: 'Tony' }));
+    authorize({ id: 1, username: 'TaehwanGo', displayName: 'Tony' });
   };
   const onPressLogout = () => {
-    dispatch(logout());
+    logout();
   };
   return (
     <View>

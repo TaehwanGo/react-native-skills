@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../states/redux/slice';
+import useUser from '../../hooks/useUser';
 
 const AuthStatus = () => {
-  const user = useSelector((state: RootState) => state.auth.user);
+  const user = useUser();
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
