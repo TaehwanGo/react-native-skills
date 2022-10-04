@@ -1,13 +1,11 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
+import useTodos from '../../hooks/useTodos';
 import { todoStyles } from '../../styles/todos';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
-  const todos = [
-    { id: 1, text: 'todo1', done: true },
-    { id: 2, text: 'todo2', done: false },
-  ];
+  const todos = useTodos();
   return (
     <FlatList
       style={todoStyles.container}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
+import useTodosActions from '../../hooks/useTodosActions';
 import { todoStyles } from '../../styles/todos';
 import BlackButton from './BlackButton';
 
@@ -9,11 +10,12 @@ interface TodoItemProps {
   done: boolean;
 }
 const TodoItem = ({ id, text, done }: TodoItemProps) => {
+  const { toggle, remove } = useTodosActions();
   const onToggle = () => {
-    console.log('onToggle', id);
+    toggle(id);
   };
   const onRemove = () => {
-    console.log('onRemove', id);
+    remove(id);
   };
 
   return (

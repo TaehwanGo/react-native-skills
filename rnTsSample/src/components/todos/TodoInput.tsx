@@ -1,12 +1,14 @@
 import React from 'react';
 import { TextInput, View } from 'react-native';
+import useTodosActions from '../../hooks/useTodosActions';
 import { todoStyles } from '../../styles/todos';
 import BlackButton from './BlackButton';
 
 const TodoInput = () => {
   const [text, setText] = React.useState('');
+  const { add } = useTodosActions();
   const onPress = () => {
-    console.log('등록', text);
+    add(text);
     setText('');
   };
   return (
