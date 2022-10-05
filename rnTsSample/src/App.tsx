@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './states/redux/store';
-import TodoApp from './components/todos/TodoApp';
+import PostsApp from './components/post/PostsApp';
 
 function App() {
   return (
     <Provider store={store}>
-      <TodoApp />
+      <PostsApp />
     </Provider>
   );
 }
