@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
 import todos from './todos';
+import posts from './posts';
 
 const rootReducer = combineReducers({
   auth,
   todos,
+  posts,
 });
 
 // RootState는 나중에 useSelector를 사용할 때 필요합니다.
