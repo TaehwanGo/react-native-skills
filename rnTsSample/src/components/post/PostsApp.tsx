@@ -8,12 +8,10 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import usePosts from '../../hooks/usePosts';
 
 const PostsApp = () => {
-  const data = [
-    { id: 1, title: 'title1', body: 'body1' },
-    { id: 2, title: 'title2', body: 'body2' },
-  ];
+  const { data, loading, refetch } = usePosts();
   return (
     <SafeAreaView style={styles.container}>
       {data ? (
@@ -32,7 +30,7 @@ const PostsApp = () => {
       ) : (
         <ActivityIndicator size="large" color="black" />
       )}
-      <Button title="새로고침" onPress={() => {}} />
+      <Button title="새로고침" onPress={refetch} disabled={loading} />
     </SafeAreaView>
   );
 };
