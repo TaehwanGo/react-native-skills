@@ -1,6 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer, { RootState } from '../slice';
 
+/**
+ * configureStore엔 thunk 미들웨어가 내장되어 있다
+ */
 const store = configureStore({
   reducer: rootReducer,
 });
