@@ -21,6 +21,7 @@
     "react-native-safe-area-context": "^4.4.1",
     "react-native-screens": "^3.17.0",
     "react-redux": "^8.0.4",
+    "recoil": "^0.7.5",
     "redux": "^4.2.0"
   },
   "devDependencies": {
