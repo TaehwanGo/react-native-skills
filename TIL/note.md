@@ -275,3 +275,15 @@ ios/{프로젝트\_이름}/Info.plist
     - 에러
       - verify error:num=10:certificate has expired
   - 다음주 팀장님한테 물어보기로 했다
+
+# 2022. 10. 07.
+
+## axios
+
+- post메서드로 data를 보낼 때 json stringify 된 데이터가 body로 보내진다
+
+![](./images/requestConsole.png)
+
+![](./images/requestNetwork.png)
+
+- 그래도 Network 탭에서 보면 정상적으로 json 데이터가 전송된 것을 확인할 수 있다
