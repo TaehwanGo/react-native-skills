@@ -55,3 +55,160 @@
   - nvm으로 변경 후 설치
   - 실행 : yarn develop
 - 기존에 했던 설정 다시 해야 됨
+
+## 14.6 Postman 설치 후 요청 테스트
+
+## 14.7 회원가입 및 로그인 API 사용하기
+
+- Strapi에서 소셜 로그인도 설정하면 사용할 수 있지만
+- 이메일 인증 방식만 사용
+
+#### 회원가입 API
+
+```JSON
+// POST http:localhost:1337/auth/local/register
+{
+  "username": "tony",
+  "email": "gth1123@naver.com",
+  "password": "abcd1234"
+}
+```
+
+#### 로그인 API
+
+```json
+// POST http://localhost:1337/auth/local
+{
+  "identifier": "gth1123@naver.com",
+  "password": "abcd1234"
+}
+```
+
+```json
+{
+  "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY1NjY4NjkxLCJleHAiOjE2NjgyNjA2OTF9.ZwwsJdBxh6BZK0E2NwJcFaC0B6jCFM0RII1VAAvkczE",
+  "user": {
+    "id": 1,
+    "username": "tony",
+    "email": "gth1123@naver.com",
+    "provider": "local",
+    "confirmed": true,
+    "blocked": null,
+    "role": {
+      "id": 1,
+      "name": "Authenticated",
+      "description": "Default role given to authenticated user.",
+      "type": "authenticated"
+    },
+    "created_at": "2022-10-13T13:44:51.866Z",
+    "updated_at": "2022-10-13T13:44:51.878Z"
+  }
+}
+```
+
+- jwt: JSON Web Token
+  - JSON을 base64로 인코딩하고 해당 데이터에 서명을 추가하는 방식
+
+## 14.8 Article API 사용하기
+
+```json
+// POST http://localhost:1337/articles
+{
+  "title": "첫 게시글",
+  "body": "hello world"
+}
+```
+
+- 403 forbidden
+
+- jwt 토큰 사용
+  - header에 Authorization : Bearer {토큰}
+    - Bearer(운반자) : 토큰 인증 타입
+    - jwt 같이 특정 접근 권한을 증명하기 위한 토큰 값을 Authorization 정보로 사용할 때는 Bearer를 사용
+
+```json
+// 응답
+{
+  "id": 1,
+  "title": "첫 게시글",
+  "body": "hello world",
+  "user": {
+    "id": 1,
+    "username": "tony",
+    "email": "gth1123@naver.com",
+    "provider": "local",
+    "confirmed": true,
+    "blocked": null,
+    "role": 1,
+    "created_at": "2022-10-13T13:44:51.866Z",
+    "updated_at": "2022-10-13T13:44:51.878Z"
+  },
+  "published_at": "2022-10-13T14:02:53.126Z",
+  "created_at": "2022-10-13T14:02:53.136Z",
+  "updated_at": "2022-10-13T14:02:53.144Z"
+}
+```
+
+## 14.9 Comment API 수정하기
+
+- 레포에서 받아왔기 때문에 수정이 되어 있음
+
+## 14.10 댓글 API 사용
+
+- 댓글을 작성해보자
+
+```json
+// POST http://localhost:1337/articles/1/comments
+{
+  "message": "hi hi",
+}
+
+// 응답
+{
+    "id": 1,
+    "message": "hi hi",
+    "user": {
+        "id": 1,
+        "username": "tony",
+        "email": "gth1123@naver.com",
+        "provider": "local",
+        "confirmed": true,
+        "blocked": null,
+        "role": 1,
+        "created_at": "2022-10-13T13:44:51.866Z",
+        "updated_at": "2022-10-13T13:44:51.878Z"
+    },
+    "published_at": "2022-10-13T14:14:15.238Z",
+    "created_at": "2022-10-13T14:14:15.240Z",
+    "updated_at": "2022-10-13T14:14:15.243Z"
+}
+```
+
+```json
+// GET http://localhost:1337/ariticle/1/comments
+
+[
+  {
+    "id": 1,
+    "message": "hi hi",
+    "user": {
+      "id": 1,
+      "username": "tony",
+      "email": "gth1123@naver.com",
+      "provider": "local",
+      "confirmed": true,
+      "blocked": null,
+      "role": 1,
+      "created_at": "2022-10-13T13:44:51.866Z",
+      "updated_at": "2022-10-13T13:44:51.878Z"
+    },
+    "published_at": "2022-10-13T14:14:15.238Z",
+    "created_at": "2022-10-13T14:14:15.240Z",
+    "updated_at": "2022-10-13T14:14:15.243Z"
+  }
+]
+```
+
+## 14.11 정리
+
+- Strapi를 사용하여 REST API 서버를 구축
