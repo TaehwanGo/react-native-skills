@@ -25,7 +25,6 @@ function ArticleItem({id, title, publishedAt, username}: ArticleItemProps) {
   return (
     <Pressable
       style={({pressed}) => [
-        // 뭘까?
         styles.block,
         Platform.OS === 'ios' && pressed && styles.pressed,
       ]}
