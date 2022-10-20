@@ -1,5 +1,7 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import {RootStackNavigationProp} from '../types/screens';
 
 export interface ArticleItemProps {
   id: number;
@@ -9,10 +11,9 @@ export interface ArticleItemProps {
 }
 
 function ArticleItem({id, title, publishedAt, username}: ArticleItemProps) {
+  const navigation = useNavigation<RootStackNavigationProp>();
   const onPress = () => {
-    // BUG: onPress가 실행되지 않음
-    // TODO: 눌렀을 때 게시글 열기
-    console.log('onPress', id);
+    navigation.navigate('Article', {id});
   };
 
   const formattedDate = new Date(publishedAt).toLocaleDateString('ko-KR', {
