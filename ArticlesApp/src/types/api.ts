@@ -33,3 +33,14 @@ export interface AuthResult {
   jwt: string;
   user: User;
 }
+
+export interface RegisterParams {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginParams {
+  identifier: string;
+  password: string;
+}
