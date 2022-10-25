@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import AuthForm from '../AuthForm';
 
 function LoginScreen() {
-  return <View />;
+  return <AuthForm />;
 }
 
 export default LoginScreen;
