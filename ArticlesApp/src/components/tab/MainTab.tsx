@@ -28,7 +28,7 @@ function MainTab() {
         options={{
           title: '사용자 메뉴',
           tabBarIcon: ({color, size}) => (
-            <MaterialIcons name="menu" color={color} size={size} />
+            <MaterialIcons name="person" color={color} size={size} />
           ),
         }}
       />
