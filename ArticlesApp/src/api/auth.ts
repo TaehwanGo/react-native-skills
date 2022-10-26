@@ -2,7 +2,10 @@ import {AuthResult, LoginParams, RegisterParams, User} from '../types/api';
 import client from './client';
 
 export async function register(params: RegisterParams) {
-  const response = await client.post<AuthResult>('/auth/register', params);
+  const response = await client.post<AuthResult>(
+    '/auth/local/register',
+    params,
+  );
   return response.data;
 }
 
