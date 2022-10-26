@@ -12,4 +12,15 @@ const client = axios.create({
   baseURL,
 });
 
+/**
+ * token : jwt 토큰, 인증토큰
+ */
+export function applyToken(token: string) {
+  client.defaults.headers.common.Authorization = `Bearer ${token}`;
+}
+
+export function clearToken() {
+  client.defaults.headers.common.Authorization = undefined;
+}
+
 export default client;

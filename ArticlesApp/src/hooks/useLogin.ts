@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {useMutation} from 'react-query';
 import {login} from '../api/auth';
+import {applyToken} from '../api/client';
 import {useUserState} from '../states/context/UserContext';
 import {AuthError} from '../types/api';
 import {RootStackNavigationProp} from '../types/screens';
@@ -12,10 +13,11 @@ const useLogin = () => {
     onSuccess: data => {
       setUser(data.user);
       navigation.pop(); // go back to previous screen
-      // TODO: 인증 토큰 적용
+      applyToken(data.jwt);
     },
     onError: (error: AuthError) => {
       console.log('error', error);
+      console.log(error.response?.data);
       // TODO: 구현 예정
     },
   });
