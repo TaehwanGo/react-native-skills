@@ -3,6 +3,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {clearToken} from '../../api/client';
 import {useUserState} from '../../states/context/UserContext';
+import authStorage from '../../storages/authStorage';
 import {RootStackNavigationProp} from '../../types/screens';
 import MenuItem from '../MenuItem';
 
@@ -16,6 +17,7 @@ function UserMenuScreen() {
   const onLogout = () => {
     setUser(null);
     clearToken();
+    authStorage.clear();
   };
 
   return (

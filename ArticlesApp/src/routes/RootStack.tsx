@@ -6,10 +6,12 @@ import {RootStackParamList} from '../types/screens';
 import MyArticlesScreen from '../components/screens/MyArticlesScreen';
 import LoginScreen from '../components/screens/LoginScreen';
 import RegisterScreen from '../components/screens/RegisterScreen';
+import useAuthLoadEffect from '../hooks/useAuthLoadEffect';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootStack() {
+  useAuthLoadEffect();
   return (
     <Stack.Navigator screenOptions={{headerBackTitle: '닫기'}}>
       <Stack.Screen
