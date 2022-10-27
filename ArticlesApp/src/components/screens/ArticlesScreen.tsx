@@ -2,14 +2,17 @@ import React from 'react';
 import {ActivityIndicator, StyleSheet} from 'react-native';
 import {useQuery} from 'react-query';
 import {getArticles} from '../../api/articles';
+import {useUserState} from '../../states/context/UserContext';
 import Articles from '../Articles';
 
 function ArticlesScreen() {
   const {data} = useQuery('articles', getArticles);
+  const [user] = useUserState();
+
   if (!data) {
     return <ActivityIndicator size="large" style={styles.spinner} />;
   }
-  return <Articles articles={data} />;
+  return <Articles articles={data} showWriteButton={!!user} />;
 }
 
 const styles = StyleSheet.create({
