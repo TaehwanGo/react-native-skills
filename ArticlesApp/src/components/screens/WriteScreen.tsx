@@ -10,7 +10,7 @@ import {
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import {RootStackNavigationProp} from '../../types/screens';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {useMutation, useQueryClient} from 'react-query';
+import {InfiniteData, useMutation, useQueryClient} from 'react-query';
 import {writeArticle} from '../../api/articles';
 import {Article} from '../../types/api';
 
@@ -28,8 +28,23 @@ function WriteScreen() {
       // queryClient.setQueryData('articles', articles.concat(article)); // 새로운 글을 articles 쿼리의 데이터에 추가
 
       // 캐시 데이터에 새로운 글 추가 축약버전
-      queryClient.setQueryData<Article[]>('articles', articles => {
-        return (articles ?? []).concat(article);
+      // queryClient.setQueryData<Article[]>('articles', articles => {
+      //   return (articles ?? []).concat(article);
+      // });
+
+      // 페이지네이션(useInfiniteQuery)을 사용할 때는 캐시 데이터에 새로운 글을 추가하는 대신, 새로운 글을 포함한 새로운 페이지를 추가
+      queryClient.setQueryData<InfiniteData<Article[]>>('articles', data => {
+        if (!data) {
+          return {
+            pageParams: [undefined],
+            pages: [[article]],
+          };
+        }
+        const [firstPage, ...rest] = data.pages;
+        return {
+          ...data,
+          pages: [[article, ...firstPage], ...rest],
+        };
       });
       navigation.goBack();
     },
