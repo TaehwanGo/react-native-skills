@@ -8,6 +8,7 @@ import {getComments} from '../../api/comments';
 import {useUserState} from '../../states/context/UserContext';
 import {RootStackParamList} from '../../types/screens';
 import ArticleView from '../ArticleView';
+import CommentInput from '../CommentInput';
 import CommentItem from '../CommentItem';
 
 type ArticleScreenRouteProp = RouteProp<RootStackParamList, 'Article'>;
@@ -46,14 +47,17 @@ function ArticleScreen() {
         />
       )}
       ListHeaderComponent={
-        <ArticleView
-          title={title}
-          body={body}
-          publishedAt={published_at}
-          username={user.username}
-          id={id}
-          isMyArticle={isMyArticle}
-        />
+        <>
+          <ArticleView
+            title={title}
+            body={body}
+            publishedAt={published_at}
+            username={user.username}
+            id={id}
+            isMyArticle={isMyArticle}
+          />
+          <CommentInput articleId={id} />
+        </>
       }
     />
   );
