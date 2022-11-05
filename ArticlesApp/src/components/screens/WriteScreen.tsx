@@ -1,5 +1,5 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useCallback, useEffect, useState} from 'react';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -8,17 +8,30 @@ import {
   TextInput,
 } from 'react-native';
 import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
-import {RootStackNavigationProp} from '../../types/screens';
+import {RootStackNavigationProp, RootStackParamList} from '../../types/screens';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {InfiniteData, useMutation, useQueryClient} from 'react-query';
-import {writeArticle} from '../../api/articles';
+import {modifyArticle, writeArticle} from '../../api/articles';
 import {Article} from '../../types/api';
 
+type WriteScreenRouteProp = RouteProp<RootStackParamList, 'Write'>;
+
 function WriteScreen() {
+  const {params} = useRoute<WriteScreenRouteProp>();
   const {top} = useSafeAreaInsets();
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
   const queryClient = useQueryClient();
+
+  const cachedArticle = useMemo(
+    () =>
+      params.articleId
+        ? queryClient.getQueryData<Article>(['article', params.articleId])
+        : null,
+    [params.articleId, queryClient],
+  );
+
+  const [title, setTitle] = useState(cachedArticle?.title ?? ''); // 초기값을 이렇게 할 수도 있구나
+  const [body, setBody] = useState(cachedArticle?.body ?? '');
+
   const {mutate: write} = useMutation(writeArticle, {
     onSuccess: article => {
       // queryClient.invalidateQueries('articles'); // 새로운 글을 작성하면 articles 쿼리를 다시 요청하도록 설정
@@ -50,10 +63,39 @@ function WriteScreen() {
     },
   });
 
+  const {mutate: modify} = useMutation(modifyArticle, {
+    onSuccess: article => {
+      // 게시글 목록 수정
+      queryClient.setQueryData<InfiniteData<Article[]>>('articles', data => {
+        // data의 타입이 undefined가 아님을 명시 하기 위해 추가
+        // modify의 경우엔 data가 무조건 유효하기 때문에 실제로 실행될 일은 없음
+        if (!data) {
+          return {
+            pageParams: [],
+            pages: [],
+          };
+        }
+
+        return {
+          pageParams: data.pageParams,
+          pages: data.pages.map(page =>
+            page.find(item => item.id === article.id)
+              ? page.map(item => (item.id === article.id ? article : item))
+              : page,
+          ),
+        };
+      });
+    },
+  });
+
   const navigation = useNavigation<RootStackNavigationProp>();
   const onSubmit = useCallback(() => {
-    write({title, body});
-  }, [title, body, write]);
+    if (params.articleId) {
+      modify({id: params.articleId, title, body});
+    } else {
+      write({title, body});
+    }
+  }, [title, body, write, modify, params.articleId]);
 
   useEffect(() => {
     navigation.setOptions({
