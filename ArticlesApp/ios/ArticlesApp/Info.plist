@@ -26,6 +26,7 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<!-- iOS 등록 시 HTTPS만 통신 할 수 있도록 주석 처리 시작 -->
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -34,6 +35,7 @@
 				<true/>
 			</dict>
 		</dict>
+		<!-- iOS 등록 시 HTTPS만 통신 할 수 있도록 주석 처리 끝 -->
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
