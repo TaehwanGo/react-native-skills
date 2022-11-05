@@ -85,6 +85,10 @@ function WriteScreen() {
           ),
         };
       });
+
+      // 게시글 수정
+      queryClient.setQueryData<Article>(['article', article.id], article);
+      navigation.goBack();
     },
   });
 

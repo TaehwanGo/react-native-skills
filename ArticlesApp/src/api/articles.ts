@@ -40,3 +40,9 @@ export async function modifyArticle(params: {
   const response = await client.put<Article>(`/articles/${id}`, {title, body});
   return response.data;
 }
+
+export async function deleteArticle(id: number) {
+  const response = await client.delete<Article>(`/articles/${id}`);
+  console.log('deleteArticle response', response);
+  return response?.data;
+}
